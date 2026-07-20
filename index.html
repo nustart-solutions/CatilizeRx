@@ -81,11 +81,8 @@
     display: flex; align-items: center;
     padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.25rem, 6vw, 5rem);
   }
-  .lockup { display: flex; align-items: center; gap: .8rem; text-decoration: none; }
-  .lockup img { width: 44px; height: auto; flex: none; }
-  .lockup span { font-size: 1.45rem; font-weight: 300; color: var(--ink); letter-spacing: .01em; }
-  .lockup strong { font-weight: 700; }
-  .lockup sup { font-size: .55em; }
+  .lockup { display: block; text-decoration: none; }
+  .lockup img { height: clamp(44px, 5vw, 54px); width: auto; display: block; }
 
   /* ---- Hero ---- */
   main { flex: 1; display: flex; align-items: center; }
@@ -252,7 +249,7 @@
     padding: 2rem;
     box-shadow: 0 24px 60px -30px rgba(10,0,40,.8);
   }
-  .gate-card img { width: 46px; height: auto; }
+  .gate-card img { width: min(230px, 80%); height: auto; }
   .gate-card h2 { margin-top: .9rem; font-size: 1.35rem; font-weight: 700; color: var(--ink); }
   .gate-card > p { margin-top: .4rem; font-size: .97rem; line-height: 1.5; }
   .gate-card label { display: block; margin-top: 1rem; font-size: .92rem; font-weight: 600; color: var(--ink); }
@@ -276,7 +273,7 @@
        ================================================================ -->
   <div class="gate" id="gate">
     <form class="gate-card" id="gate-form">
-      <img src="catilize-logo.png" alt="" width="132" height="138">
+      <img src="catilize-logo.webp" alt="Catilize Health" width="829" height="200">
       <h2>Private preview</h2>
       <p>This page isn't public yet. Enter the preview credentials to view it.</p>
       <label for="gate-user">Username</label>
@@ -307,9 +304,8 @@
   <div class="page">
 
     <header class="reveal">
-      <a class="lockup" href="https://catilize.com/" aria-label="Catilize Health">
-        <img src="catilize-logo.png" alt="" width="132" height="138">
-        <span><strong>Catilize</strong> Health<sup>&reg;</sup></span>
+      <a class="lockup" href="https://catilize.com/">
+        <img src="catilize-logo.webp" alt="Catilize Health" width="829" height="200">
       </a>
     </header>
 
