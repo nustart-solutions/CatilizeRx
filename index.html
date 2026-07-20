@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catilize®Rx | Coming Soon — Catilize Health</title>
+<meta name="description" content="Catilize®Rx is coming soon from Catilize Health, the team behind the MERP Medical Plan. Sign up to be the first to know.">
+<link rel="canonical" href="https://catilizerx.com/">
+<meta name="theme-color" content="#420098">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Catilize®Rx | Coming Soon">
+<meta property="og:description" content="Catilize®Rx from Catilize Health is on the way. Protect what matters.">
+<meta property="og:url" content="https://catilizerx.com/">
+<meta property="og:site_name" content="Catilize®Rx">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E030F3'/%3E%3Cstop offset='1' stop-color='%238D21FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M81.1 28.2 A38 38 0 1 0 81.1 71.8' fill='none' stroke='url(%23g)' stroke-width='13' stroke-linecap='round'/%3E%3Cpath d='M50 62 C42 54 34 49.6 34 43.5 C34 38.8 37.8 35 42.5 35 C45.6 35 48.4 36.6 50 39.2 C51.6 36.6 54.4 35 57.5 35 C62.2 35 66 38.8 66 43.5 C66 49.6 58 54 50 62 Z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #420098;        /* brand background */
+    --purple-deep: #340079;   /* panels */
+    --magenta: #E030F3;       /* accent 1 */
+    --violet: #8D21FF;
+    --blue: #4158FE;
+    --cyan: #26FFE8;          /* accent 2 */
+    --ink: #FBFAFF;           /* near-white, purple-tinted */
+    --body: #DDD3F6;          /* body copy on purple */
+    --muted: #B7A6E4;         /* footer / small print */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
+    background: var(--purple);
+    color: var(--body);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---- Master color blend (brand background device) ---- */
+  .blend { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .blend span { position: absolute; border-radius: 50%; will-change: transform; }
+  .blend .b1 {
+    width: 70vmax; height: 70vmax; top: -30vmax; left: -20vmax;
+    background: radial-gradient(circle, rgba(65,88,254,.5) 0%, rgba(65,88,254,0) 62%);
+    animation: drift1 26s ease-in-out infinite alternate;
+  }
+  .blend .b2 {
+    width: 60vmax; height: 60vmax; bottom: -25vmax; right: -15vmax;
+    background: radial-gradient(circle, rgba(224,48,243,.4) 0%, rgba(224,48,243,0) 62%);
+    animation: drift2 32s ease-in-out infinite alternate;
+  }
+  .blend .b3 {
+    width: 38vmax; height: 38vmax; bottom: -10vmax; right: 18vmax;
+    background: radial-gradient(circle, rgba(38,255,232,.22) 0%, rgba(38,255,232,0) 60%);
+    animation: drift1 38s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes drift1 { from { transform: translate(0,0); } to { transform: translate(6vmax, 4vmax); } }
+  @keyframes drift2 { from { transform: translate(0,0); } to { transform: translate(-5vmax, -6vmax); } }
+
+  /* ---- Giant C-ring motif (protective bubble) ---- */
+  .ring {
+    position: fixed; z-index: 0; pointer-events: none;
+    top: 50%; right: -14vw; transform: translateY(-50%);
+    width: min(56vw, 860px); height: auto; opacity: .9;
+  }
+
+  .page { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100svh; }
+
+  /* ---- Header ---- */
+  header {
+    display: flex; align-items: center;
+    padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.25rem, 6vw, 5rem);
+  }
+  .lockup { display: flex; align-items: center; gap: .8rem; text-decoration: none; }
+  .lockup svg { width: 44px; height: 44px; flex: none; }
+  .lockup span { font-size: 1.45rem; font-weight: 300; color: var(--ink); letter-spacing: .01em; }
+  .lockup strong { font-weight: 700; }
+
+  /* ---- Hero ---- */
+  main { flex: 1; display: flex; align-items: center; }
+  .hero {
+    width: 100%;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 6vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+    max-width: 780px;
+  }
+
+  .kicker {
+    display: inline-flex; align-items: center; gap: .55rem;
+    border: 1px solid rgba(251,250,255,.28); border-radius: 999px;
+    padding: .42rem 1.05rem;
+    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .kicker i {
+    width: .55rem; height: .55rem; border-radius: 50%; background: var(--cyan);
+    box-shadow: 0 0 10px rgba(38,255,232,.9);
+  }
+
+  h1 {
+    margin-top: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(2.7rem, 7vw, 5rem);
+    font-weight: 900; line-height: 1.04; letter-spacing: -.015em;
+    color: var(--ink);
+    max-width: 15ch;
+  }
+  h1 .tm { /* trademark symbols in display type */
+    font-size: .34em; font-weight: 700; line-height: 0;
+    position: relative; top: -1.15em; letter-spacing: 0;
+  }
+
+  .tagline {
+    margin-top: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-weight: 700; color: var(--ink); line-height: 1.45;
+  }
+  .tagline .zero { color: var(--cyan); }
+
+  .sub {
+    margin-top: .9rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.65; max-width: 56ch;
+  }
+
+  /* ---- Signup panel ---- */
+  .signup {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    background: var(--purple-deep);
+    border: 1px solid rgba(141,33,255,.45);
+    border-radius: 22px;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    max-width: 560px;
+    box-shadow: 0 24px 60px -30px rgba(10,0,40,.8);
+  }
+  .signup h2 { font-size: 1.35rem; font-weight: 700; color: var(--ink); }
+  .signup > p { margin-top: .45rem; font-size: 1rem; line-height: 1.55; }
+
+  #hubspot-form { margin-top: 1.25rem; }
+
+  /* Fallback CTA (shown until the HubSpot embed replaces it) */
+  .fallback-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .fallback-cta .note { font-size: .95rem; color: var(--muted); }
+  .fallback-cta .note a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  .fallback-cta .note a:hover { text-decoration: underline; }
+
+  .btn {
+    display: inline-block;
+    background: var(--magenta);
+    color: #fff;
+    font-weight: 700; font-size: .95rem; letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none;
+    padding: .85rem 1.9rem;
+    border: none; border-radius: 999px;
+    cursor: pointer;
+    transition: transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1), background-color .18s;
+    box-shadow: 0 10px 28px -10px rgba(224,48,243,.65);
+  }
+  .btn:hover { background: #EA55F6; transform: translateY(-2px); box-shadow: 0 16px 34px -10px rgba(224,48,243,.75); }
+  .btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+  /* ---- HubSpot form theming (applies automatically once the embed is pasted) ---- */
+  #hubspot-form .hs-form fieldset { max-width: none; }
+  #hubspot-form .hs-form-field { margin-bottom: 1rem; }
+  #hubspot-form .hs-form label {
+    display: block; margin-bottom: .35rem;
+    font-size: .92rem; font-weight: 600; color: var(--ink);
+  }
+  #hubspot-form .hs-form-required { color: var(--cyan); margin-left: .15rem; }
+  #hubspot-form .hs-input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+    width: 100% !important;
+    background: #FBFAFF; color: #2A0060;
+    border: 2px solid transparent; border-radius: 12px;
+    padding: .7rem .95rem;
+    font-family: inherit; font-size: 1rem;
+  }
+  #hubspot-form .hs-input:focus {
+    outline: none; border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(38,255,232,.35);
+  }
+  #hubspot-form .hs-button { /* HubSpot submit button -> brand pill */
+    display: inline-block;
+    background: var(--magenta); color: #fff;
+    font-family: inherit; font-weight: 700; font-size: .95rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .85rem 1.9rem;
+    border: none; border-radius: 999px; cursor: pointer;
+    transition: transform .18s cubic-bezier(.22,1,.36,1), background-color .18s;
+  }
+  #hubspot-form .hs-button:hover { background: #EA55F6; transform: translateY(-2px); }
+  #hubspot-form .hs-error-msg, #hubspot-form .hs-error-msgs label { color: #FFC0DC; font-size: .88rem; font-weight: 600; }
+  #hubspot-form .hs_error_rollup { display: none; }
+  #hubspot-form .submitted-message { color: var(--cyan); font-weight: 700; font-size: 1.05rem; }
+  #hubspot-form .legal-consent-container, #hubspot-form .legal-consent-container p { font-size: .8rem; color: var(--muted); }
+
+  /* ---- Footer ---- */
+  footer {
+    border-top: 1px solid rgba(251,250,255,.16);
+    padding: 1.4rem clamp(1.25rem, 6vw, 5rem);
+    display: flex; flex-wrap: wrap; gap: .5rem 2rem;
+    font-size: .88rem; color: var(--muted);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--cyan); }
+
+  /* ---- Entrance motion ---- */
+  .reveal { opacity: 0; transform: translateY(18px); animation: rise .8s cubic-bezier(.22,1,.36,1) forwards; }
+  .d1 { animation-delay: .08s; } .d2 { animation-delay: .18s; } .d3 { animation-delay: .28s; }
+  .d4 { animation-delay: .38s; } .d5 { animation-delay: .5s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blend span { animation: none; }
+    .reveal { animation: none; opacity: 1; transform: none; }
+    .btn, #hubspot-form .hs-button { transition: none; }
+  }
+
+  @media (max-width: 900px) {
+    .ring { top: -16vw; right: -30vw; transform: none; width: 82vw; opacity: .45; }
+    .hero { max-width: 640px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Master color blend background -->
+  <div class="blend" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+  <!-- Protective-bubble C-ring motif -->
+  <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#26FFE8"/>
+        <stop offset=".55" stop-color="#5F47FF"/>
+        <stop offset="1" stop-color="#E030F3"/>
+      </linearGradient>
+    </defs>
+    <path d="M81.1 28.2 A38 38 0 1 0 81.1 71.8" fill="none" stroke="url(#ringGrad)" stroke-width="11" stroke-linecap="round"/>
+    <path d="M50 62 C42 54 34 49.6 34 43.5 C34 38.8 37.8 35 42.5 35 C45.6 35 48.4 36.6 50 39.2 C51.6 36.6 54.4 35 57.5 35 C62.2 35 66 38.8 66 43.5 C66 49.6 58 54 50 62 Z" fill="url(#ringGrad)" opacity=".9"/>
+  </svg>
+
+  <div class="page">
+
+    <header class="reveal">
+      <a class="lockup" href="https://catilize.com/" aria-label="Catilize Health">
+        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E030F3"/>
+              <stop offset="1" stop-color="#8D21FF"/>
+            </linearGradient>
+          </defs>
+          <path d="M81.1 28.2 A38 38 0 1 0 81.1 71.8" fill="none" stroke="url(#markGrad)" stroke-width="13" stroke-linecap="round"/>
+          <path d="M50 62 C42 54 34 49.6 34 43.5 C34 38.8 37.8 35 42.5 35 C45.6 35 48.4 36.6 50 39.2 C51.6 36.6 54.4 35 57.5 35 C62.2 35 66 38.8 66 43.5 C66 49.6 58 54 50 62 Z" fill="url(#markGrad)"/>
+        </svg>
+        <span><strong>Catilize</strong> Health</span>
+      </a>
+    </header>
+
+    <main>
+      <div class="hero">
+        <p class="kicker reveal d1"><i aria-hidden="true"></i> Coming soon</p>
+
+        <h1 class="reveal d2">Catilize<span class="tm">&reg;</span>Rx is on the way.</h1>
+
+        <p class="tagline reveal d3">Protect what matters.</p>
+
+        <p class="sub reveal d3">
+          Something new from Catilize Health, the team behind the MERP Medical Plan.
+          We're putting the finishing touches on it now.
+        </p>
+
+        <section class="signup reveal d4" aria-labelledby="signup-heading">
+          <h2 id="signup-heading">Be the first to know</h2>
+          <p>Leave your details and we'll let you know the moment Catilize&reg;Rx launches.</p>
+
+          <div id="hubspot-form">
+            <!-- ================================================================
+                 HUBSPOT FORM EMBED
+                 1. Paste the HubSpot embed code (provided separately)
+                    directly BELOW this comment.
+                 2. Then DELETE the fallback block between the
+                    "FALLBACK START" and "FALLBACK END" comments.
+                 The form will pick up the brand styling automatically.
+                 ================================================================ -->
+
+            <!-- FALLBACK START — delete this block once the HubSpot form is pasted in -->
+            <div class="fallback-cta">
+              <a class="btn" href="mailto:info@catilizehealth.com?subject=Keep%20me%20posted%20on%20Catilize%20Rx">Notify me at launch</a>
+              <p class="note">or call <a href="tel:+18778724232">1&nbsp;(877)&nbsp;872-4232</a></p>
+            </div>
+            <!-- FALLBACK END -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="reveal d5">
+      <span>&copy; 2026 Catilize Health. All rights reserved.</span>
+      <span>2605 Nicholson Rd., Suite 1140, Sewickley, PA 15143</span>
+      <a href="tel:+18778724232">1 (877) 872-4232</a>
+      <a href="mailto:info@catilizehealth.com">info@catilizehealth.com</a>
+      <a href="https://catilize.com/">catilize.com</a>
+    </footer>
+
+  </div>
+
+</body>
+</html>
