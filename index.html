@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="locked">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PREVIEW-ONLY: remove this robots meta at launch -->
+<meta name="robots" content="noindex, nofollow">
 <title>Catilize®Rx | Coming Soon — Catilize Health</title>
 <meta name="description" content="Catilize®Rx is coming soon from Catilize Health, the team behind the MERP Medical Plan. Sign up to be the first to know.">
 <link rel="canonical" href="https://catilizerx.com/">
@@ -225,9 +227,74 @@
     .ring { top: -16vw; right: -30vw; transform: none; width: 82vw; opacity: .45; }
     .hero { max-width: 640px; }
   }
+
+  /* ---- PREVIEW-ONLY password gate — remove this whole block at launch ---- */
+  .locked .page, .locked .ring { visibility: hidden; }
+  .gate {
+    position: fixed; inset: 0; z-index: 50;
+    background: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .gate::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(45vmax 45vmax at 15% 0%, rgba(224,48,243,.35), transparent 65%),
+      radial-gradient(50vmax 50vmax at 100% 100%, rgba(65,88,254,.45), transparent 65%);
+  }
+  .gate-card {
+    position: relative;
+    width: min(100%, 400px);
+    background: var(--purple-deep);
+    border: 1px solid rgba(141,33,255,.45);
+    border-radius: 22px;
+    padding: 2rem;
+    box-shadow: 0 24px 60px -30px rgba(10,0,40,.8);
+  }
+  .gate-card svg { width: 46px; height: 46px; }
+  .gate-card h2 { margin-top: .9rem; font-size: 1.35rem; font-weight: 700; color: var(--ink); }
+  .gate-card > p { margin-top: .4rem; font-size: .97rem; line-height: 1.5; }
+  .gate-card label { display: block; margin-top: 1rem; font-size: .92rem; font-weight: 600; color: var(--ink); }
+  .gate-card input {
+    width: 100%; margin-top: .35rem;
+    background: #FBFAFF; color: #2A0060;
+    border: 2px solid transparent; border-radius: 12px;
+    padding: .68rem .95rem; font-family: inherit; font-size: 1rem;
+  }
+  .gate-card input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(38,255,232,.35); }
+  .gate-card .btn { margin-top: 1.4rem; width: 100%; text-align: center; }
+  .gate-error { margin-top: .8rem; font-size: .9rem; font-weight: 600; color: #FFC0DC; }
 </style>
 </head>
 <body>
+
+  <!-- ================================================================
+       PREVIEW-ONLY GATE — at launch, remove: this block, the gate CSS
+       block, the gate script at the bottom, the "locked" class on
+       <html>, and the robots noindex meta in <head>.
+       ================================================================ -->
+  <div class="gate" id="gate">
+    <form class="gate-card" id="gate-form">
+      <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gateGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#E030F3"/>
+            <stop offset="1" stop-color="#8D21FF"/>
+          </linearGradient>
+        </defs>
+        <path d="M81.1 28.2 A38 38 0 1 0 81.1 71.8" fill="none" stroke="url(#gateGrad)" stroke-width="13" stroke-linecap="round"/>
+        <path d="M50 62 C42 54 34 49.6 34 43.5 C34 38.8 37.8 35 42.5 35 C45.6 35 48.4 36.6 50 39.2 C51.6 36.6 54.4 35 57.5 35 C62.2 35 66 38.8 66 43.5 C66 49.6 58 54 50 62 Z" fill="url(#gateGrad)"/>
+      </svg>
+      <h2>Private preview</h2>
+      <p>This page isn't public yet. Enter the preview credentials to view it.</p>
+      <label for="gate-user">Username</label>
+      <input id="gate-user" type="text" autocomplete="username" autocapitalize="none" required>
+      <label for="gate-pass">Password</label>
+      <input id="gate-pass" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit">View page</button>
+      <p class="gate-error" id="gate-error" hidden>That's not it. Check the credentials and try again.</p>
+    </form>
+  </div>
 
   <!-- Master color blend background -->
   <div class="blend" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
@@ -310,6 +377,40 @@
     </footer>
 
   </div>
+
+<script>
+/* PREVIEW-ONLY gate script — remove at launch */
+(function () {
+  var KEY = 'catilize-preview-ok';
+  var HASH = 'f5ae231e10282fbf7ab7d2079b16cd2c3865c3db4160d7fd8aade6772d6d21ce';
+  function unlock() {
+    document.documentElement.classList.remove('locked');
+    var g = document.getElementById('gate');
+    if (g) g.remove();
+  }
+  if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
+  function sha256(s) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+    });
+  }
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var u = document.getElementById('gate-user').value.trim().toLowerCase();
+    var p = document.getElementById('gate-pass').value.trim();
+    Promise.all([sha256(u), sha256(p)]).then(function (h) {
+      if (h[0] === HASH && h[1] === HASH) {
+        try { sessionStorage.setItem(KEY, '1'); } catch (err) {}
+        unlock();
+      } else {
+        document.getElementById('gate-error').hidden = false;
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
