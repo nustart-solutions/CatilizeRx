@@ -6,6 +6,17 @@ The whole site is the single `index.html` (no build step; the only external requ
 
 Design follows the Catilize Branding Guide (CAT-0002, Feb 2021): brand purple `#420098`, magenta `#E030F3` / cyan `#26FFE8` accents, master color blend background, C-ring logo motif, Source Sans Pro (Source Sans 3) type.
 
+## Preview mode (currently active — remove at launch)
+
+The page currently carries two preview-only additions, both comment-marked `PREVIEW-ONLY` in `index.html`:
+
+- `<meta name="robots" content="noindex, nofollow">` so the preview URL stays out of search.
+- A password gate (username `catilize`, password `catilize`). Client-side JS with hashed credentials — fine for keeping previews semi-private, not real security.
+
+At launch, remove: the robots meta, the gate `<div>`, the gate CSS block, the gate `<script>`, and the `locked` class on `<html>`. Each spot is marked with a comment.
+
+Live preview: https://nustart-solutions.github.io/CatilizeRx/
+
 ## Adding the HubSpot form
 
 1. In `index.html`, find the `HUBSPOT FORM EMBED` comment inside `<div id="hubspot-form">`.
